@@ -32,25 +32,32 @@ void	check_error(int argc, char **argv)
 	}
 }
 
-//sa (swap a): Swap the first 2 elements at the top of stack a.
-//Do nothing if there is only one or no elements.
-// void	sa(int argc, char **argv)
-// {
-// 	char *temp;
+void	ft_swap(int a, int b)
+{
+	
+}
 
-// 	if (argc == 2)
-// 		return (0);
-// 	else
-// 	{
-// 		temp == argv[1];
-// 		argv[1] == argv[2];
-// 		argv[2] == temp;
-// 	}
-// }
+void	check_sorted(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argc++)
+	{
+		if (*argv[i] > *argv[i + 1]);
+			ft_swap
+	}
+}
+
+void	insertion_sort(int argc, char **argv)
+{
+
+}
 
 int main(int argc, char **argv)
 {
 	check_error(argc, argv);
-	
+	check_sorted(argc, argv);
+	insertion_sort(argc, argv);
 	return (0);
 }
