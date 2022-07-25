@@ -1,63 +1,74 @@
 #include "../includes/push_swap.h"
 
-void	check_error(int argc, char **argv)
+//this function is to check whether array is sorted
+int	check_sorted(t_data *data)
 {
-	int i;
-	int	j;
+	int	i;
+	int	res;
+	int	size;
 
-	i = 1;
-	if (argc < 2)
+	i = 0;
+	res = 1;
+	size = data->size_a;
+	while (i < size - 1)
 	{
-		ft_putstr_fd("Usage: [Programe Name] [Numbers]\n", 1);
-		exit(0);
-	}
-	while (argv[i])
-	{
-		if (!(ft_isnum(argv[i])))
+		printf ("checking: %d < %d\n", data->stack_a[i], data->stack_a[i + 1]);
+		if (data->stack_a[i] > data->stack_a[i + 1])
 		{
-			ft_putstr_fd("Error!\n", 1);
-			exit(0);
-		}
-		j = 0;
-		while (argv[++j])
-		{
-			if ((ft_atoi(argv[j]) == ft_atoi(argv[i]) && j != i)
-				|| (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN))
-			{
-				ft_putstr_fd("No Duplicate numbers allowed\n", 1);
-				exit (0);
-			}
+			res = 0;
+			break ;
 		}
 		i++;
 	}
-}
-
-void	ft_swap(int a, int b)
-{
-	
-}
-
-void	check_sorted(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argc++)
+	if (res == 1)
 	{
-		if (*argv[i] > *argv[i + 1]);
-			ft_swap
+		printf("sorted\n");
+		return (1);
+	}
+	else
+	{
+		printf("not sorted\n");
+		return (0);
 	}
 }
 
-void	insertion_sort(int argc, char **argv)
+static t_data *init_struct(t_data *data, int argc)
 {
+	data->stack_a = 0;
+	data->stack_b = 0;
+	data->size_a = argc - 1;
+	data->size_b = 0;
+	return (data);
+}
 
+void init_data(t_data *data, int argc, char **argv)
+{
+	int x;
+
+	x = 0;
+	data->stack_a = malloc(sizeof(int) * (argc - 1));
+	while (x < argc - 1)
+	{
+		data->stack_a[x] = ft_atoi(argv[x + 1]);
+		x++;
+	}
+	// printf ("%d\n", stack_a[2]);
 }
 
 int main(int argc, char **argv)
 {
+	t_data *data;
+
+	data = malloc(sizeof(t_data));
 	check_error(argc, argv);
-	check_sorted(argc, argv);
-	insertion_sort(argc, argv);
+	init_struct(data, argc);
+	init_data(data, argc, argv);
+	printf ("%d\n", data->stack_a[2]);
+	if (check_sorted(data))
+	{
+		free(data->stack_a);
+		// free(data->stack_b);
+		free(data);
+	}
 	return (0);
 }
