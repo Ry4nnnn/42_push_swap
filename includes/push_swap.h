@@ -13,11 +13,17 @@ typedef struct s_data
 	int size_b;
 }	t_data;
 
+//check.c
 void	check_error(int argc, char **argv);
 int		check_sorted(t_data *data);
-// void	init_array(t_data *data, int argc, char **argv);
 
 //utils
 int	ft_isnum(char *s);
+
+//moves
+void	swap_top(t_data *data, int type);
+void	top2bot(t_data *data, int type);
+void	bot2top(t_data *data, int type);
+void	push_top(t_data *data, int type);
 
 #endif

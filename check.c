@@ -1,37 +1,5 @@
 #include "../includes/push_swap.h"
 
-int	ft_atoi(const char *str)
-{
-	int	result;
-	int	sign;
-
-	result = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || (*str == 32))
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while ((*str >= 48 && *str <= 57) && *str != '\0')
-	{
-		result = (*str - 48) + (result * 10);
-		str++;
-	}
-	return (result * sign);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	while (*s)
-	{
-		write (fd, s, 1);
-		s++;
-	}
-}
-
 void	check_error(int argc, char **argv)
 {
 	int i;
@@ -62,4 +30,30 @@ void	check_error(int argc, char **argv)
 		}
 		i++;
 	}
+}
+
+//this function is to check whether array is sorted
+//sorted  = 1;
+//not sorted = 0;
+int	check_sorted(t_data *data)
+{
+	int	i;
+	int	res;
+
+	i = 1;
+	res = 1;
+	while (i < data->size_a)
+	{
+		// printf ("checking: %d < %d\n", data->stack_a[i - 1], data->stack_a[i]);
+		if (data->stack_a[i - 1] > data->stack_a[i])
+		{
+			res = 0;
+			break ;
+		}
+		i++;
+	}
+	if (res == 1)
+		return (1);
+	else
+		return (0);
 }

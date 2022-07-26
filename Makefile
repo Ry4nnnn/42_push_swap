@@ -1,6 +1,6 @@
 NAME	= push_swap
 SRCS	= $(wildcard *.c)
-OBJS	= ${SRCS:.c=.o}
+OBJS	= ${SRCS:.c=.o} 
 LIB		= -Llibft -lft
 INCLUDE = -Iincludes -Ilibft
 
@@ -10,7 +10,7 @@ RM		= rm -rf
 
 all		: ${NAME}
 
-${NAME} : ${OBJS}
+${NAME} : ${OBJS} ${OBJS_INSTR}
 	@make -C libft
 	@${CC} ${FLAGS} ${LIB} ${INCLUDE} $(addprefix obj/, ${OBJS}) -o $@
  
