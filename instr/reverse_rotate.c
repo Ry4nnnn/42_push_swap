@@ -1,4 +1,4 @@
-#include "./includes/push_swap.h"
+#include "push_swap.h"
 
 static	void	shift_down(int *data, int size)
 {

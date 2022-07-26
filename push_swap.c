@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static t_data *init_struct(t_data *data, int argc)
 {
@@ -29,11 +29,11 @@ void	sort_stack(t_data *data)
 		if (!check_sorted(data))
 			swap_top(data, 1);
 	}
-	// if (data->size_a == 3)
-	// {
-	// 	if (!check_sorted(data))
-	// 		swap_3(data);
-	// }
+	if (data->size_a == 3)
+	{
+		if (!check_sorted(data))
+			sort_3(data);
+	}
 	// if (data->size_a == 5)
 	// {
 	// 	if (!check_sorted(data))

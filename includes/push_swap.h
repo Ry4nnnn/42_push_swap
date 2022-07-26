@@ -26,4 +26,7 @@ void	top2bot(t_data *data, int type);
 void	bot2top(t_data *data, int type);
 void	push_top(t_data *data, int type);
 
+//sort_small_num
+void	sort_3(t_data *data);
+
 #endif
