@@ -26,3 +26,32 @@ void	sort_3(t_data *data)
 		top2bot(data, 1);
 	}
 }
+
+void	push_back(t_data *data)
+{
+	int i;
+	int mask;
+
+	i = 0;
+	mask = data->stack_b[0];
+	printf ("%d\n", data->stack_b[0]);
+	while (i < data->size_a)
+	{
+		if (mask > data->stack_a[i])
+			i++;
+		else
+			push_top(data, 1);
+	}
+
+	printf("i:%d\n", i);
+}
+
+void	sort_5(t_data *data)
+{
+	push_top(data, 2);
+	push_top(data, 2);
+	sort_3(data);
+	push_back(data);
+	// print_stack(data);
+	// push_back(data);
+}

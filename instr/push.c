@@ -22,6 +22,12 @@ static void	push_a(t_data *data)
 	free (temp);
 	data->size_a += 1;
 	data->size_b -= 1;
+	while (i < data->size_b)
+	{
+		data->stack_b[i] = data->stack_b[i + 1];
+		i++;
+	}
+	data->stack_b[i] = '\0';
 }
 
 static void	push_b(t_data *data)
@@ -43,9 +49,16 @@ static void	push_b(t_data *data)
 		data->stack_b[i] = temp[i];
 		i++;
 	}
+	i = 0;
 	free (temp);
 	data->size_a -= 1;
 	data->size_b += 1;
+	while (i < data->size_a)
+	{
+		data->stack_a[i] = data->stack_a[i + 1];
+		i++;
+	}
+	data->stack_a[i] = '\0';
 }
 
 

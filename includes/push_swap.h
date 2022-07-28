@@ -28,5 +28,8 @@ void	push_top(t_data *data, int type);
 
 //sort_small_num
 void	sort_3(t_data *data);
+void	sort_5(t_data *data);
+
+void	print_stack(t_data *data);
 
 #endif

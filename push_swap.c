@@ -15,6 +15,7 @@ void init_stack(t_data *data, int argc, char **argv)
 
 	x = 0;
 	data->stack_a = malloc(sizeof(int) * (argc - 1));
+	data->stack_b = malloc(sizeof(int) * (argc - 1));
 	while (x < argc - 1)
 	{
 		data->stack_a[x] = ft_atoi(argv[x + 1]);
@@ -34,13 +35,26 @@ void	sort_stack(t_data *data)
 		if (!check_sorted(data))
 			sort_3(data);
 	}
-	// if (data->size_a == 5)
-	// {
-	// 	if (!check_sorted(data))
-	// 		swap_5(data);
-	// }
+	if (data->size_a == 5)
+	{
+		if (!check_sorted(data))
+			sort_5(data);
+	}
 	else
 		return ;
+}
+
+void	print_stack(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->stack_a[i] != '\0')
+	{
+		printf ("%d", data->stack_a[i]);
+		i++;
+	}
+	printf ("\n");
 }
 
 int main(int argc, char **argv)
@@ -55,7 +69,7 @@ int main(int argc, char **argv)
 	if (check_sorted(data))
 	{
 		free(data->stack_a);
-		// free(data->stack_b);
+		free(data->stack_b);
 		free(data);
 		ft_putstr_fd("sorted\n", 1);
 		exit(1);
