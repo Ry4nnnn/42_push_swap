@@ -2,25 +2,12 @@
 
 static t_data *init_struct(t_data *data, int argc)
 {
-	data->stack_a = 0;
-	data->stack_b = 0;
-	data->len_a = argc - 1;//minus the program name
+	data->argc = argc;
+	data->len_a = 0;
 	data->len_b = 0;
+	data->stack_a = ft_calloc(data->len_a, sizeof(int));
+	data->stack_b = ft_calloc(data->len_a, sizeof(int));
 	return (data);
-}
-
-void init_stack(t_data *data, int argc, char **argv)
-{
-	int x;
-
-	x = 0;
-	data->stack_a = malloc(sizeof(int) * (argc - 1));
-	data->stack_b = malloc(sizeof(int) * (argc - 1));
-	while (x < argc - 1)
-	{
-		data->stack_a[x] = ft_atoi(argv[x + 1]);
-		x++;
-	}
 }
 
 void	sort_stack(t_data *data)
@@ -40,31 +27,34 @@ void	sort_stack(t_data *data)
 		if (!check_sorted(data))
 			sort_5(data);
 	}
-	else
-		return ;
+	// if (data->len <= 250)
+	// {
+			// insertion_sort();
+	// }
 }
 
-void	print_stack(t_data *data)
-{
-	int i;
+// void	print_stack(t_data *data)
+// {
+// 	int i;
 
-	i = 0;
-	while (data->stack_a[i] != '\0')
-	{
-		printf ("%d", data->stack_a[i]);
-		i++;
-	}
-	printf ("\n");
-}
+// 	i = 0;
+// 	while (data->stack_a[i] != '\0')
+// 	{
+// 		printf ("%d", data->stack_a[i]);
+// 		i++;
+// 	}
+// 	printf ("\n");
+// }
 
 int main(int argc, char **argv)
 {
 	t_data *data;
 
+	(void)argc;
 	data = malloc(sizeof(t_data));
-	check_error(argc, argv);
 	init_struct(data, argc);
-	init_stack(data, argc, argv);
+	create_stack(data, argv);
+	// init_stack(data, argv);
 	if (check_sorted(data))
 	{
 		free(data->stack_a);
@@ -74,6 +64,5 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	sort_stack(data);
-	// insertion_sort(data);
 	return (0);
 }

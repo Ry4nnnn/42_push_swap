@@ -11,10 +11,11 @@ typedef struct s_data
 	int *stack_b;
 	int len_a;
 	int len_b;
+	int argc;
 }	t_data;
 
 //check.c
-void	check_error(int argc, char **argv);
+void	create_stack(t_data *data, char **argv);
 int		check_sorted(t_data *data);
 
 //utils
@@ -24,7 +25,6 @@ int	ft_isnum(char *s);
 void	swap_top(t_data *data, int type);
 void	rotate(t_data *data, int type);
 void	rev_rotate(t_data *data, int type);
-// void	push_top(t_data *data, int type);
 void	push_a(t_data *data);
 void	push_b(t_data *data);
 

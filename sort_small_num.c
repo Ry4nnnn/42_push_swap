@@ -32,26 +32,24 @@ void	push_back(t_data *data)
 	int mask;
 
 	mask = data->stack_b[0];
-	if (mask > data->stack_a[4])
+	if (mask > data->stack_a[data->len_a - 1])
 	{
 		push_a(data);
 		rotate(data, 1);
+		return ;
 	}
-	if (mask < data->stack_a[4])
+	if (data->len_a == 4)
 	{
-		rev_rotate(data, 1);
-		push_a(data);
-		rotate(data, 1);
-		rotate(data, 1);
+		if (mask > data->stack_a[2] && mask < data->stack_a[3])
+		{
+			rev_rotate(data, 1);
+			push_a(data);
+			rotate(data, 1);
+			rotate(data, 1);
+			return ;
+		}
 	}
-	else if (mask < data->stack_a[3])
-	{
-		rev_rotate(data, 1);
-		push_a(data);
-		rotate(data, 1);
-		rotate(data, 1);
-	}
-	else if (mask < data->stack_a[2])
+	if (mask > data->stack_a[1] && mask < data->stack_a[2])
 	{
 		rotate(data, 1);
 		rotate(data, 1);
@@ -59,7 +57,7 @@ void	push_back(t_data *data)
 		rev_rotate(data, 1);
 		rev_rotate(data, 1);
 	}
-	else if (mask < data->stack_a[1])
+	else if (mask > data->stack_a[0] && mask < data->stack_a[1])
 	{
 		rotate(data, 1);
 		push_a(data);
