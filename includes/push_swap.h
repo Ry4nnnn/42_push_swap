@@ -9,8 +9,8 @@ typedef struct s_data
 {
 	int *stack_a;
 	int *stack_b;
-	int size_a;
-	int size_b;
+	int len_a;
+	int len_b;
 }	t_data;
 
 //check.c
@@ -22,9 +22,11 @@ int	ft_isnum(char *s);
 
 //moves
 void	swap_top(t_data *data, int type);
-void	top2bot(t_data *data, int type);
-void	bot2top(t_data *data, int type);
-void	push_top(t_data *data, int type);
+void	rotate(t_data *data, int type);
+void	rev_rotate(t_data *data, int type);
+// void	push_top(t_data *data, int type);
+void	push_a(t_data *data);
+void	push_b(t_data *data);
 
 //sort_small_num
 void	sort_3(t_data *data);

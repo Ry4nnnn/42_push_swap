@@ -12,46 +12,68 @@ void	sort_3(t_data *data)
 	if (a > b && a < c)
 		swap_top(data, 1);
 	else if (a < b && a > c)
-		bot2top(data, 1);
+		rev_rotate(data, 1);
 	else if (a > b && a > c && b < c)
-		top2bot(data, 1);
+		rotate(data, 1);
 	else if (a > b && a > c && b > c)
 	{
 		swap_top(data, 1);
-		bot2top(data, 1);
+		rev_rotate(data, 1);
 	}
 	else if (a < b && a < c && b > c)
 	{
 		swap_top(data, 1);
-		top2bot(data, 1);
+		rotate(data, 1);
 	}
 }
 
 void	push_back(t_data *data)
 {
-	// int i;
 	int mask;
 
-	// i = 0;
 	mask = data->stack_b[0];
-	printf ("%d\n", data->stack_b[0]);
-	if (mask < data->stack_a[0])
+	if (mask > data->stack_a[4])
 	{
-		push_top(data, 1);
+		push_a(data);
+		rotate(data, 1);
 	}
-	else if (mask > data->stack_a[data->size_a])
+	if (mask < data->stack_a[4])
 	{
-		push_top(data, 1);
-		top2bot(data, 1);
+		rev_rotate(data, 1);
+		push_a(data);
+		rotate(data, 1);
+		rotate(data, 1);
 	}
+	else if (mask < data->stack_a[3])
+	{
+		rev_rotate(data, 1);
+		push_a(data);
+		rotate(data, 1);
+		rotate(data, 1);
+	}
+	else if (mask < data->stack_a[2])
+	{
+		rotate(data, 1);
+		rotate(data, 1);
+		push_a(data);
+		rev_rotate(data, 1);
+		rev_rotate(data, 1);
+	}
+	else if (mask < data->stack_a[1])
+	{
+		rotate(data, 1);
+		push_a(data);
+		rev_rotate(data, 1);
+	}
+	else
+		push_a(data);
 }
 
 void	sort_5(t_data *data)
 {
-	push_top(data, 2);
-	push_top(data, 2);
+	push_b(data);
+	push_b(data);
 	sort_3(data);
 	push_back(data);
-	// print_stack(data);
-	// push_back(data);
+	push_back(data);
 }

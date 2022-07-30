@@ -42,7 +42,7 @@ int	check_sorted(t_data *data)
 
 	i = 1;
 	res = 1;
-	while (i < data->size_a)
+	while (i < data->len_a)
 	{
 		// printf ("checking: %d < %d\n", data->stack_a[i - 1], data->stack_a[i]);
 		if (data->stack_a[i - 1] > data->stack_a[i])

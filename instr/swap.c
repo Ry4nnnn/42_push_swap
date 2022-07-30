@@ -6,7 +6,7 @@ void	swap_top(t_data *data, int type)
 
 	if (type == 1 || type == 3)
 	{
-		if (data->size_a <= 1)
+		if (data->len_a <= 1)
 			return ;
 		temp = data->stack_a[0];
 		data->stack_a[0] = data->stack_a[1];
@@ -14,7 +14,7 @@ void	swap_top(t_data *data, int type)
 	}
 	if (type == 2 || type == 3)
 	{
-		if (data->size_b <= 1)
+		if (data->len_b <= 1)
 			return ;
 		temp = data->stack_b[0];
 		data->stack_b[0] = data->stack_b[1];
