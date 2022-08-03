@@ -7,7 +7,7 @@ static	void update_b(t_data *data)
 
 	i = 0;
 	temp = malloc(sizeof(int) * data->len_b - 1);
-	while (i < data->len_b - 1)
+	while (i < data->len_b)
 	{
 		temp[i] = data->stack_b[i + 1];
 		i++;
@@ -29,8 +29,8 @@ static	void update_a(t_data *data)
 
 	i = 0;
 	temp = malloc(sizeof(int) * data->len_a + 1);
-	temp[i] = data->stack_a[0];
-	printf ("temp:%d\n", temp[0]);
+	temp[i] = data->stack_b[0];
+	// printf ("temp:%d\n", temp[0]);
 	while (i < data->len_a)
 	{
 		temp[i + 1] = data->stack_a[i];

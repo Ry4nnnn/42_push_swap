@@ -7,7 +7,7 @@ static	void update_a(t_data *data)
 
 	i = 0;
 	temp = malloc(sizeof(int) * data->len_a - 1);
-	while (i < data->len_a - 1)
+	while (i < data->len_a)
 	{
 		temp[i] = data->stack_a[i + 1];
 		i++;

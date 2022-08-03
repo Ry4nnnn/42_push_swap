@@ -17,17 +17,17 @@ void	sort_stack(t_data *data)
 		if (!check_sorted(data))
 			swap_top(data, 1);
 	}
-	if (data->len_a == 3)
+	else if (data->len_a == 3)
 	{
 		if (!check_sorted(data))
 			sort_3(data);
 	}
-	if (data->len_a == 5)
+	else if (data->len_a == 5)
 	{
 		if (!check_sorted(data))
 			sort_5(data);
 	}
-	// if (data->len <= 250)
+	// else
 	// {
 			// insertion_sort();
 	// }
