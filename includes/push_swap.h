@@ -17,6 +17,7 @@ typedef struct s_data
 //check.c
 void	create_stack(t_data *data, char **argv);
 int		check_sorted(t_data *data);
+void	check_dup(t_data *data);
 
 //utils
 int	ft_isnum(char *s);

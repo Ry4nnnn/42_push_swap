@@ -5,8 +5,8 @@ static t_data *init_struct(t_data *data, int argc)
 	data->argc = argc;
 	data->len_a = 0;
 	data->len_b = 0;
-	data->stack_a = ft_calloc(data->len_a, sizeof(int));
-	data->stack_b = ft_calloc(data->len_a, sizeof(int));
+	// data->stack_a = ft_calloc(data->len_a, sizeof(int));
+	// data->stack_b = ft_calloc(data->len_a, sizeof(int));
 	return (data);
 }
 
