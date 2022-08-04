@@ -34,5 +34,6 @@ void	sort_3(t_data *data);
 void	sort_5(t_data *data);
 
 void	print_stack(t_data *data);
+int	find_chunks(t_data *data);
 
 #endif

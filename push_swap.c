@@ -27,24 +27,12 @@ void	sort_stack(t_data *data)
 		if (!check_sorted(data))
 			sort_5(data);
 	}
-	// else
-	// {
-			// insertion_sort();
-	// }
+	else
+	{
+		find_chunks(data);
+		// insertion_sort();
+	}
 }
-
-// void	print_stack(t_data *data)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (data->stack_a[i] != '\0')
-// 	{
-// 		printf ("%d", data->stack_a[i]);
-// 		i++;
-// 	}
-// 	printf ("\n");
-// }
 
 int main(int argc, char **argv)
 {

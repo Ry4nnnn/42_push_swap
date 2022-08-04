@@ -32,7 +32,6 @@ void	push_back(t_data *data)
 	int mask;
 
 	mask = data->stack_b[0];
-	// printf ("length:%d, stack_a:%d, mask:%d, next_mask:%d\n", data->len_a, data->stack_a[0], data->stack_b[0], data->stack_b[1]);
 	if (mask > data->stack_a[data->len_a - 1])
 	{
 		push_a(data);
