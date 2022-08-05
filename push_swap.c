@@ -27,7 +27,7 @@ void	sort_stack(t_data *data)
 		if (!check_sorted(data))
 			sort_5(data);
 	}
-	else
+	else if (data->len_a <= 250)
 	{
 		find_chunks(data);
 		// insertion_sort();

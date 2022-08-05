@@ -21,11 +21,14 @@ int find_small(t_data *data)
 
 void	find_chunks(t_data *data)
 {
-	int i;
+	int chunk_sz;
+	int remainder;
 
-	i = 0;
-	while (i < data->len_a)
+	chunk_sz = data=>len_a / 4;
+	remainder = data->len_a % 4;
+	if (data->stack_a[i] == find_small(data))
 	{
-		
+		push_b(data);
+		i++;
 	}
 }
