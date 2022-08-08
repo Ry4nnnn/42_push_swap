@@ -23,12 +23,17 @@ void	find_chunks(t_data *data)
 {
 	int chunk_sz;
 	int remainder;
+	int i;
 
-	chunk_sz = data=>len_a / 4;
+	i = 0;
+	chunk_sz = data->len_a / 4;
 	remainder = data->len_a % 4;
-	if (data->stack_a[i] == find_small(data))
+	while (chunk_sz--)
 	{
-		push_b(data);
-		i++;
+		if (data->stack_a[i] == find_small(data))
+		{
+			push_b(data);
+			i++;
+		}
 	}
 }
