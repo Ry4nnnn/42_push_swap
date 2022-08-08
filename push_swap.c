@@ -29,8 +29,7 @@ void	sort_stack(t_data *data)
 	}
 	else if (data->len_a <= 250)
 	{
-		find_chunks(data);
-		// insertion_sort();
+		insertion_sort(data, 2);
 	}
 }
 
@@ -38,11 +37,9 @@ int main(int argc, char **argv)
 {
 	t_data *data;
 
-	(void)argc;
 	data = malloc(sizeof(t_data));
 	init_struct(data, argc);
 	create_stack(data, argv);
-	// init_stack(data, argv);
 	if (check_sorted(data))
 	{
 		free(data->stack_a);
@@ -52,5 +49,8 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	sort_stack(data);
+	free(data->stack_a);
+	free(data->stack_b);
+	free(data);
 	return (0);
 }

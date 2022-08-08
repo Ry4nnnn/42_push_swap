@@ -12,6 +12,14 @@ typedef struct s_data
 	int len_a;
 	int len_b;
 	int argc;
+	int min_num;
+	int max_num;
+	int total_chunk;
+	int chunk_size;
+	int chunk_remainder;
+	int threshold;
+	int up_threshold;
+	int low_threshold;
 }	t_data;
 
 //check.c
@@ -33,7 +41,8 @@ void	push_b(t_data *data);
 void	sort_3(t_data *data);
 void	sort_5(t_data *data);
 
-void	print_stack(t_data *data);
-int	find_chunks(t_data *data);
+void	insertion_sort(t_data *data, int size);
+void	chunk_init_a(t_data *data, int size);
+int get_minmax(t_data *data, int type);
 
 #endif
