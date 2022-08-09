@@ -1,13 +1,44 @@
 #include "push_swap.h"
 
+
+//type 1 == find idx of smallest num
+//type 2 == find idx of largest num
+int get_minmax(int *stack, int size, int type)
+{
+	int i;
+	int res;
+
+	i = 0;
+	res = 0;
+	if (type == 1)
+	{
+		while (i < size)
+		{
+			if (i > 0 && stack[i] < stack[res])
+				res = i;
+			i++;
+		}
+	}
+	else
+	{
+		while (i < size)
+		{
+			if (i > 0 && stack[i] > stack[res])
+				res = i;
+			i++;
+		}
+	}
+	return (res);
+}
+
 void	chunk_init_a(t_data *data, int size)
 {
-	// int	size_a;
+	int	len_a;
 	int diff;
 
-	// size_a = data->len_a;
-	data->min_num = data->stack_a[get_minmax(data, 1)];//index of the min number in the stack
-	data->max_num = data->stack_a[get_minmax(data, 2)];//index of the max number in the stack
+	len_a = data->len_a;
+	data->min_num = data->stack_a[get_minmax(data->stack_a, len_a, 1)];//index of the min number in the stack
+	data->max_num = data->stack_a[get_minmax(data->stack_a, len_a, 2)];//index of the max number in the stack
 	data->total_chunk = size;
 	diff = data->max_num - data->min_num + 1;
 	data->chunk_size = diff / size;
@@ -20,34 +51,25 @@ void	chunk_init_a(t_data *data, int size)
 	}
 }
 
-int get_minmax(t_data *data, int type)
+void	chunk_init_b(t_data *data, int size)
 {
-	int i;
-	int res;
-	int *array;
+	int len_b;
+	int diff;
 
-	i = 0;
-	res = 0;
-	array = data->stack_a;
-	if (type == 1)
+	len_b = data->len_b;
+	data->min_num = data->stack_b[get_minmax(data->stack_b, len_b, 1)];//index of the min number in the stack
+	data->max_num = data->stack_b[get_minmax(data->stack_b, len_b, 2)];//index of the max number in the stack
+	data->total_chunk = size;
+	diff = data->max_num - data->min_num + 1;
+	data->chunk_size = diff / size;
+	data->chunk_remainder = (diff % size) - 1;
+	if (data->chunk_size == 0)
 	{
-		while (i < data->len_a)
-		{
-			if (i > 0 && array[i] < array[res])
-				res = i;
-			i++;
-		}
+		data->total_chunk = 1;
+		data->chunk_size = data->chunk_remainder - 1;
+		data->chunk_remainder = 0;
 	}
-	else
-	{
-		while (i < data->len_a)
-		{
-			if (i > 0 && array[i] > array[res])
-				res = i;
-			i++;
-		}
-	}
-	return (res);
+
 }
 
 int get_threshold(t_data *data)
@@ -75,14 +97,6 @@ int get_threshold(t_data *data)
 		return (0);
 	data->threshold = data->threshold + 1;
 	return (1);
-}
-
-int push_threshold(t_data *data)
-{
-	int a;
-	int b;
-
-	
 }
 
 void	insertion_sort(t_data *data, int size)
