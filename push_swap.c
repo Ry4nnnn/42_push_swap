@@ -30,7 +30,7 @@ void	sort_stack(t_data *data)
 	else if (data->len_a <= 250)
 		insertion_sort(data, 2);
 	else
-		insertion_sort(data, 2);
+		insertion_sort(data, 4);
 
 }
 
