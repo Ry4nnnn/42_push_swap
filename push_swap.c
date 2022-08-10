@@ -28,16 +28,17 @@ void	sort_stack(t_data *data)
 			sort_5(data);
 	}
 	else if (data->len_a <= 250)
-	{
 		insertion_sort(data, 2);
-	}
+	else
+		insertion_sort(data, 2);
+
 }
 
 int main(int argc, char **argv)
 {
 	t_data *data;
 
-	data = malloc(sizeof(t_data));
+	data = ft_calloc(1, sizeof(t_data));
 	init_struct(data, argc);
 	create_stack(data, argv);
 	if (check_sorted(data))
@@ -45,8 +46,7 @@ int main(int argc, char **argv)
 		free(data->stack_a);
 		free(data->stack_b);
 		free(data);
-		ft_putstr_fd("sorted\n", 1);
-		exit(1);
+		return (0);
 	}
 	sort_stack(data);
 	free(data->stack_a);

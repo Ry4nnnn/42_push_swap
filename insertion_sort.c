@@ -82,16 +82,16 @@ int get_threshold(t_data *data)
 		data->low_threshold = data->min_num;
 		data->up_threshold = data->low_threshold + size;
 		if (data->chunk_remainder > 0)
-			data->up_threshold = data->chunk_remainder + size + 1;
-		data->chunk_remainder -= 1;
+			data->up_threshold = data->low_threshold + size + 1;
+		data->chunk_remainder = data->chunk_remainder - 1;
 	}
 	else if (data->threshold < data->total_chunk)
 	{
 		data->low_threshold = data->up_threshold + 1;
 		data->up_threshold = data->low_threshold + size;
 		if (data->chunk_remainder > 0)
-			data->up_threshold = data->chunk_remainder + size + 1;
-		data->chunk_remainder -= 1;
+			data->up_threshold = data->low_threshold + size + 1;
+		data->chunk_remainder = data->chunk_remainder - 1;
 	}
 	else
 		return (0);
@@ -104,13 +104,13 @@ void	insertion_sort(t_data *data, int size)
 	int	i;
 	int	check;
 	int	temp;
+	int len_a;
 
 	i = 0;
+	len_a = data->len_a;
 	chunk_init_a(data, size);
-	// printf ("%d\n", data->chunk_size);
 	check = get_threshold(data);
-	// printf ("%d\n", check);
-	while (i < size)
+	while (i < len_a)
 	{
 		temp = push_threshold(data);
 		while (temp == 0 && check > 0)

@@ -29,28 +29,28 @@ int	get_threshold_min(t_data *data, int type)
 	return (-1);
 }
 
-void	rotate_multi(t_data *data, int size, int type)
-{
-	int i;
+// void	rotate_multi(t_data *data, int size, int type)
+// {
+// 	int i;
 
-	i = 0;
-	if  (type == 1)
-	{
-		while (i < size)
-		{
-			rotate(data, 1);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < size)
-		{
-			rev_rotate(data, 1);
-			i++;
-		}
-	}
-}	
+// 	i = 0;
+// 	if  (type == 1)
+// 	{
+// 		while (i < size)
+// 		{
+// 			rotate(data, 1);
+// 			i++;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		while (i < size)
+// 		{
+// 			rev_rotate(data, 1);
+// 			i++;
+// 		}
+// 	}
+// }	
 
 void rotate_over(t_data *data, int a, int b)
 {
