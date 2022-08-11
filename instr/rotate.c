@@ -25,20 +25,14 @@ static void	shift_up(int *stack, int size)
 //first top to the last one 123 -> 231
 void rotate(t_data *data, int type)
 {
+	if (type == 1 || type == 3)
+		shift_up(data->stack_a, data->len_a);
+	if (type == 2 || type == 3)
+		shift_up(data->stack_b, data->len_b);
 	if (type == 1)
-	{
-		shift_up(data->stack_a, data->len_a);
 		ft_putstr_fd("ra\n", 1);
-	}
 	if (type == 2)
-	{
-		shift_up(data->stack_b, data->len_b);
 		ft_putstr_fd("rb\n", 1);
-	}
 	if (type == 3)
-	{
-		shift_up(data->stack_a, data->len_a);
-		shift_up(data->stack_b, data->len_b);
 		ft_putstr_fd("rr\n", 1);
-	}
 }

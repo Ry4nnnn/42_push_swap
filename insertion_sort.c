@@ -39,8 +39,15 @@ void	chunk_init_a(t_data *data, int size)
 	len_a = data->len_a;
 	data->min_num = data->stack_a[get_minmax(data->stack_a, len_a, 1)];//index of the min number in the stack
 	data->max_num = data->stack_a[get_minmax(data->stack_a, len_a, 2)];//index of the max number in the stack
+	// int i = 0;
+	// while (i < data->len_a)
+	// {
+	// 	printf (" %d |", data->stack_a[i]);
+	// 	i++;
+	// }
 	data->total_chunk = size;
 	diff = data->max_num - data->min_num + 1;
+	// printf ("max:%d	|	min:%d\n", data->max_num, data->min_num);
 	data->chunk_size = diff / size;
 	data->chunk_remainder = (diff % size) - 1;
 	if (data->chunk_size == 0)
@@ -77,6 +84,7 @@ int get_threshold(t_data *data)
 	int size;
 
 	size  = data->chunk_size;
+	// printf ("				gt_size: %d\n", size);
 	if (data->threshold == 0)
 	{
 		data->low_threshold = data->min_num;
@@ -102,19 +110,21 @@ int get_threshold(t_data *data)
 void	insertion_sort(t_data *data, int size)
 {
 	int	i;
+	int len_a;
 	int	check;
 	int	temp;
-	int len_a;
 
 	i = 0;
 	len_a = data->len_a;
 	chunk_init_a(data, size);
 	check = get_threshold(data);
+	// printf ("len_a: %d\n", len_a);
 	while (i < len_a)
 	{
 		temp = push_threshold(data);
 		while (temp == 0 && check > 0)
 		{
+			// printf ("temp: %d | check: %d\n", temp, check);
 			check = get_threshold(data);
 			temp = push_threshold(data);
 		}

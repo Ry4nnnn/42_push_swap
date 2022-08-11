@@ -86,30 +86,6 @@ void	sort_asc(t_data *data)
 }
 
 /* 1 = rotate_up, 2 = rotate_down */
-void	rotate_both(t_data *data, int amount, int type)
-{
-	int	i;
-
-	i = 0;
-	if (type == 1)
-	{
-		while (i < amount)
-		{
-			rotate(data, 3);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < amount)
-		{
-			rev_rotate(data, 3);
-			i++;
-		}
-	}
-}
-
-/* 1 = rotate_up, 2 = rotate_down */
 void	rotate_multi(t_data *data, int amount, int type)
 {
 	int	i;
@@ -157,6 +133,29 @@ void	rotate_multi_b(t_data *data, int amount, int type)
 	}
 }
 
+/* 1 = rotate_up, 2 = rotate_down */
+void	rotate_both(t_data *data, int amount, int type)
+{
+	int	i;
+
+	i = 0;
+	if (type == 1)
+	{
+		while (i < amount)
+		{
+			rotate(data, 3);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < amount)
+		{
+			rev_rotate(data, 3);
+			i++;
+		}
+	}
+}
 
 void	addmoves(t_data *data, int *a, int *b, int type)
 {
