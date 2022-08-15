@@ -1,9 +1,17 @@
 NAME	= push_swap
+# CHECKER	= checker
+
 SRCS	= $(wildcard *.c)
+# SRCS_B	= $(wildcard *.c)
+
 INSTR	= $(wildcard ./instr/*.c)
-OBJS	= ${SRCS:.c=.o} 
+
+OBJS	= ${SRCS:.c=.o}
+
 OBJS_INSTR	= ${INSTR:./instr/%.c=%.o}
+
 LIB		= -Llibft -lft
+
 INCLUDE = -Iincludes -Ilibft
 
 FLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
