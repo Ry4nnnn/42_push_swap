@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   smart_rotate.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/15 13:19:02 by welim             #+#    #+#             */
+/*   Updated: 2022/08/15 14:02:35 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	check_rotate(t_data *data, int index)
+static int	check_rotate(t_data *data, int index)
 {
-	int min;
-	int diff;
-	int idx_a;
+	int		min;
+	int		diff;
+	int		idx_a;
 
 	diff = data->len_b - index;
 	idx_a = get_index_a(data, index);
@@ -29,10 +41,10 @@ int	check_rotate(t_data *data, int index)
 	return (0);
 }
 
-void	check_smartrotate(t_data *data)
+static void	check_smartrotate(t_data *data)
 {
-	int i;
-	int total;
+	int		i;
+	int		total;
 
 	i = 0;
 	while (i < data->len_b)
@@ -50,7 +62,7 @@ void	check_smartrotate(t_data *data)
 			if (data->stack_b[data->best_idx] < data->stack_b[i])
 			{
 				data->best_idx = i;
-				data->total_move = total;//check
+				data->total_move = total;
 			}
 		}
 		i++;
@@ -58,7 +70,7 @@ void	check_smartrotate(t_data *data)
 }
 
 /* 1 = rb rrb, 2 = ra rra */
-void	rotate_remainder(t_data *data, int a, int b, int type)
+static void	rotate_remainder(t_data *data, int a, int b, int type)
 {
 	if (type == 1)
 	{
@@ -76,7 +88,7 @@ void	rotate_remainder(t_data *data, int a, int b, int type)
 	}
 }
 
-void	smartrotate(t_data *data)
+static void	smartrotate(t_data *data)
 {
 	int	ra;
 	int	rb;
@@ -103,8 +115,8 @@ void	smartrotate(t_data *data)
 
 void	push_to_a(t_data *data)
 {
-	int i;
-	int size;
+	int		i;
+	int		size;
 
 	i = 2;
 	size = data->len_b;

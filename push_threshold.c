@@ -1,11 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_threshold.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/11 22:06:56 by welim             #+#    #+#             */
+/*   Updated: 2022/08/15 13:57:31 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	get_threshold_min(t_data *data, int type)
+static int	get_threshold_min(t_data *data, int type)
 {
-	int	i;
+	int		i;
 
-	// printf ("lt:%d\n", data->low_threshold);
-	// printf ("ut:%d\n", data->up_threshold);
 	if (type == 1)
 	{
 		i = 0;
@@ -31,7 +41,7 @@ int	get_threshold_min(t_data *data, int type)
 	return (-1);
 }
 
-void rotate_over(t_data *data, int hold_a, int hold_b)
+static void	rotate_over(t_data *data, int hold_a, int hold_b)
 {
 	if (hold_a == hold_b)
 	{
@@ -49,14 +59,13 @@ void rotate_over(t_data *data, int hold_a, int hold_b)
 	}
 }
 
-int push_threshold(t_data *data)
+int	push_threshold(t_data *data)
 {
-	int hold_a;
-	int hold_b;
+	int		hold_a;
+	int		hold_b;
 
 	hold_a = get_threshold_min(data, 1);
 	hold_b = get_threshold_min(data, 2);
-	// printf ("hold_a:%d | hold_b:%d\n", hold_a, hold_b);
 	if (hold_a == -1)
 		return (0);
 	else

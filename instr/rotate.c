@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/11 21:24:53 by welim             #+#    #+#             */
+/*   Updated: 2022/08/11 21:25:08 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	shift_up(int *stack, int size)
 {
-	int i;
-	int *temp;
+	int		i;
+	int		*temp;
 
 	i = 1;
 	temp = ft_calloc(size, sizeof(int));
@@ -23,7 +35,7 @@ static void	shift_up(int *stack, int size)
 }
 
 //first top to the last one 123 -> 231
-void rotate(t_data *data, int type)
+void	rotate(t_data *data, int type)
 {
 	if (type == 1 || type == 3)
 		shift_up(data->stack_a, data->len_a);

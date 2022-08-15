@@ -6,7 +6,7 @@ OBJS_INSTR	= ${INSTR:./instr/%.c=%.o}
 LIB		= -Llibft -lft
 INCLUDE = -Iincludes -Ilibft
 
-FLAGS	= #-Wall -Werror -Wextra #-g3 -fsanitize=address
+FLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
 CC		= gcc
 RM		= rm -rf
 

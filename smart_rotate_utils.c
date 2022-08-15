@@ -1,10 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   smart_rotate_utils.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/15 13:15:19 by welim             #+#    #+#             */
+/*   Updated: 2022/08/15 14:14:39 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+//type 1 == find idx of smallest num
+//type 2 == find idx of largest num
+int	get_minmax(int *stack, int size, int type)
+{
+	int		i;
+	int		res;
+
+	i = 0;
+	res = 0;
+	if (type == 1)
+	{
+		while (i < size)
+		{
+			if (i > 0 && stack[i] < stack[res])
+				res = i;
+			i++;
+		}
+	}
+	else
+	{
+		while (i < size)
+		{
+			if (i > 0 && stack[i] > stack[res])
+				res = i;
+			i++;
+		}
+	}
+	return (res);
+}
 
 int	get_index_a(t_data *data, int index)
 {
-	int i;
-	int temp;
-	int size;
+	int		i;
+	int		temp;
+	int		size;
 
 	i = 0;
 	temp = -1;
@@ -28,13 +70,9 @@ int	get_index_a(t_data *data, int index)
 
 int	get_moves(t_data *data, int index, int type)
 {
-	// int	i;
-	// int	size;
 	int	moves_a;
 	int	moves_b;
 
-	// i = 0;
-	// size = data->len_a;
 	if (index <= data->len_b / 2)
 		moves_b = index;
 	else
@@ -49,18 +87,6 @@ int	get_moves(t_data *data, int index, int type)
 		return (moves_b);
 	else
 		return (moves_a);
-}
-
-
-//check_rotate
-int	count_moves(int i, int j)
-{
-	if (i < j)
-		return (i);
-	else if (j < i)
-		return (j);
-	else
-		return (i);
 }
 
 int	find_asc(t_data *data)
@@ -83,92 +109,4 @@ void	sort_asc(t_data *data)
 		rotate_multi(data, min, 1);
 	else if (min >= data->len_a / 2)
 		rotate_multi(data, data->len_a - min, 2);
-}
-
-/* 1 = rotate_up, 2 = rotate_down */
-void	rotate_multi(t_data *data, int amount, int type)
-{
-	int	i;
-
-	i = 0;
-	if (type == 1)
-	{
-		while (i < amount)
-		{
-			rotate(data, 1);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < amount)
-		{
-			rev_rotate(data, 1);
-			i++;
-		}
-	}
-}
-
-/* 1 = rotate_up, 2 = rotate_down */
-void	rotate_multi_b(t_data *data, int amount, int type)
-{
-	int	i;
-
-	i = 0;
-	if (type == 1)
-	{
-		while (i < amount)
-		{
-			rotate(data, 2);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < amount)
-		{
-			rev_rotate(data, 2);
-			i++;
-		}
-	}
-}
-
-/* 1 = rotate_up, 2 = rotate_down */
-void	rotate_both(t_data *data, int amount, int type)
-{
-	int	i;
-
-	i = 0;
-	if (type == 1)
-	{
-		while (i < amount)
-		{
-			rotate(data, 3);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < amount)
-		{
-			rev_rotate(data, 3);
-			i++;
-		}
-	}
-}
-
-void	addmoves(t_data *data, int *a, int *b, int type)
-{
-	if (type == 1)
-	{
-		rotate_both(data, data->rt_both, 1);
-		*a = *a - data->rt_both;
-		*b = *b - data->rt_both;
-	}
-	else
-	{
-		rotate_both(data, data->rt_both, 2);
-		*a = *a + data->rt_both;
-		*b = *b + data->rt_both;
-	}
 }
