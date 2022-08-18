@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:26:18 by welim             #+#    #+#             */
-/*   Updated: 2022/08/15 14:43:01 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/18 22:19:18 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	create_stack2(t_data *data, char **argv)
 	char	**res;
 
 	i = 0;
-	res = 0;
 	res = ft_split(argv[1], ' ');
 	while (res[i])
 		i++;
@@ -68,12 +67,15 @@ static void	create_stack2(t_data *data, char **argv)
 	{
 		if (!(ft_isnum(res[i])))
 		{
-			ft_putstr_fd("Error!\n", 1);
+			ft_putstr_fd("Error!\n", 2);
 			exit(0);
 		}
 		data->stack_a[i] = ft_atoi(res[i]);
+		free(res[i]); 
 		i++;
 	}
+	free(res);
+	data->len_a = i;
 }
 
 void	create_stack(t_data *data, char **argv)
@@ -99,8 +101,7 @@ void	create_stack(t_data *data, char **argv)
 			data->stack_a[i] = ft_atoi(argv[i + 1]);
 			i++;
 		}
+		data->len_a = i;
 	}
-	data->len_a = i;
-	free (res);
 	check_dup(data);
 }
