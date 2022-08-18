@@ -53,10 +53,8 @@ static void	input_stack2(t_stack *stack)
 void	input_stack(t_stack *stack)
 {
 	int		i;
-	char	**res;
 
 	i = 0;
-	res = 0;
 	if (stack->argc == 1)
 		exit (0);
 	else if (stack->argc == 2)

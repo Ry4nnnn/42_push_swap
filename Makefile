@@ -41,7 +41,7 @@ clean :
 	@echo "Cleaning binary files 'push_swap'..."
 
 fclean : clean
-	@rm -rf ${NAME}
+	@rm -rf ${NAME} ${CHECKER}
 	@make fclean -C libft
 
 re : fclean all
