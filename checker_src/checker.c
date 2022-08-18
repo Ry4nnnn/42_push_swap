@@ -23,43 +23,31 @@ static t_stack	*input_struct(t_stack *stack, int argc, char **argv)
 	return (stack);
 }
 
-static int	ft_isnum(char *s)
+static void	input_stack2(t_stack *stack)
 {
-	int		i;
+	int i;
+	char **res;
 
 	i = 0;
-	if (s[i] == '-')
+	res = ft_split(stack->argv[1], ' ');
+	while (res[i])
 		i++;
-	while (s[i])
-	{
-		if (s[i] >= '0' && s[i] <= '9')
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-//check for duplicate numbers
-static void	check_dup(t_stack *stack)
-{
-	int		i;
-	int		j;
-
+	stack->a = ft_calloc(i, sizeof(int));
+	stack->b = ft_calloc(i, sizeof(int));
 	i = 0;
-	while (stack->a[i])
+	while (res[i])
 	{
-		j = 0;
-		while (stack->a[++j])
+		if (!(ft_isnum(res[i])))
 		{
-			if (stack->a[i] == stack->a[j] && i != j)
-			{
-				ft_putstr_fd("no duplicate numbers allowed\n", 1);
-				exit(0);
-			}
+			ft_putstr_fd("Error!\n", 1);
+			exit(0);
 		}
+		stack->a[i] = ft_atoi(res[i]);
+		free(res[i]);
 		i++;
 	}
+	free (res);
+	stack->size_a = i;
 }
 
 void	input_stack(t_stack *stack)
@@ -69,29 +57,11 @@ void	input_stack(t_stack *stack)
 
 	i = 0;
 	res = 0;
-	// if (stack->argc == 1)
-	// 	return ;//GOT FUCKING BUG
-	if (stack->argc == 2)
-	{
-		res = ft_split(stack->argv[1], ' ');
-		while (res[i])
-			i++;
-		stack->a = ft_calloc(i, sizeof(int));
-		stack->b = ft_calloc(i, sizeof(int));
-		i = 0;
-		while (res[i])
-		{
-			if (!(ft_isnum(res[i])))
-			{
-				ft_putstr_fd("Error!\n", 1);
-				exit(0);
-			}
-			stack->a[i] = ft_atoi(res[i]);
-			free(res[i]);
-			i++;
-		}
-	}
-	else if (stack->argc > 2)
+	if (stack->argc == 1)
+		exit (0);
+	else if (stack->argc == 2)
+		input_stack2(stack);
+	else
 	{
 		stack->a = ft_calloc(stack->argc - 1, sizeof(int));
 		stack->b = ft_calloc(stack->argc - 1, sizeof(int));
@@ -100,24 +70,9 @@ void	input_stack(t_stack *stack)
 			stack->a[i] = ft_atoi(stack->argv[i + 1]);
 			i++;
 		}
+		stack->size_a = i;
 	}
-	stack->size_a = i;
-	free (res);
 	check_dup(stack);
-}
-
-static int	ft_strcmp(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 void	input_instr(char *input, t_stack *stack)
@@ -151,31 +106,6 @@ void	input_instr(char *input, t_stack *stack)
 	}
 }
 
-//this function is to check whether array is sorted
-//sorted  = 1;
-//not sorted = 0;
-int	check_sorted(t_stack *stack)
-{
-	int		i;
-	int		res;
-
-	i = 1;
-	res = 1;
-	while (i < stack->size_a)
-	{
-		if (stack->a[i - 1] > stack->a[i])
-		{
-			res = 0;
-			break ;
-		}
-		i++;
-	}
-	if (res == 1)
-		return (1);
-	else
-		return (0);
-}
-
 int main(int argc, char **argv)
 {
 	t_stack *stack;
@@ -195,11 +125,9 @@ int main(int argc, char **argv)
 				ft_putstr_fd("KO\n", 1);
 			free (input);
 			break ;
-
 		}
 		input_instr(input, stack);
 		free(input);
-
 	}
 	free (stack->a);
 	free (stack->b);

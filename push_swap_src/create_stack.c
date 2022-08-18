@@ -43,7 +43,7 @@ static void	check_dup(t_data *data)
 		{
 			if (data->stack_a[i] == data->stack_a[j] && i != j)
 			{
-				ft_putstr_fd("no duplicate numbers allowed\n", 1);
+				ft_putstr_fd("Error!\n", 1);
 				exit(0);
 			}
 		}
@@ -81,15 +81,10 @@ static void	create_stack2(t_data *data, char **argv)
 void	create_stack(t_data *data, char **argv)
 {
 	int		i;
-	char	**res;
 
 	i = 0;
-	res = 0;
-	if (data->argc < 2)
-	{
-		ft_putstr_fd("Usage: [Programe Name] [Numbers]\n", 1);
+	if (data->argc == 1)
 		exit(0);
-	}
 	else if (data->argc == 2)
 		create_stack2(data, argv);
 	else

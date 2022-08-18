@@ -28,10 +28,17 @@ typedef struct s_stack
 	char **argv;
 }	t_stack;
 
-// void	test(char *str);
+//checker.c
 void	input_stack(t_stack *stack);
 void	input_instr(char *input, t_stack *stack);
 
+//checker_utils.c
+int	ft_isnum(char *s);
+void	check_dup(t_stack *stack);
+int	ft_strcmp(char *s1, char *s2);
+int	check_sorted(t_stack *stack);
+
+//instr
 void	pa(t_stack *stack);
 void	pb(t_stack *stack);
 void	r_r(t_stack *stack, int type);
