@@ -22,7 +22,7 @@ RM		= rm -rf
 vpath %.c instr push_swap_src checker_src
 
 all		: ${NAME}
-bonus	: ${CHECKER}
+bonus	: ${NAME} ${CHECKER}
 
 ${NAME} : ${P_OBJS} ${OBJS_INSTR}
 	@make -C libft
