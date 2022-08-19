@@ -6,27 +6,16 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:19:19 by welim             #+#    #+#             */
-/*   Updated: 2022/08/18 22:23:27 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/19 12:27:06 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static t_stack	*input_struct(t_stack *stack, int argc, char **argv)
-{
-	stack->a = 0;
-	stack->b = 0;
-	stack->size_a = 0;
-	stack->size_b = 0;
-	stack->argv = argv;
-	stack->argc = argc;
-	return (stack);
-}
-
 static void	input_stack2(t_stack *stack)
 {
-	int i;
-	char **res;
+	int		i;
+	char	**res;
 
 	i = 0;
 	res = ft_split(stack->argv[1], ' ');
@@ -73,24 +62,12 @@ void	input_stack(t_stack *stack)
 	check_dup(stack);
 }
 
-void	input_instr(char *input, t_stack *stack)
+static void	input_instr2(char *input, t_stack *stack)
 {
 	if (ft_strcmp("pb\n", input))
 		pb(stack);
 	else if (ft_strcmp("pa\n", input))
 		pa(stack);
-	else if (ft_strcmp("rra\n", input))
-		r_r(stack, 1);
-	else if (ft_strcmp("rrb\n", input))
-		r_r(stack, 2);
-	else if (ft_strcmp("rrr\n", input))
-		r_r(stack, 3);
-	else if (ft_strcmp("ra\n", input))
-		r(stack, 1);
-	else if (ft_strcmp("rb\n", input))
-		r(stack, 2);
-	else if (ft_strcmp("rr\n", input))
-		r(stack, 3);
 	else if (ft_strcmp("sa\n", input))
 		swap(stack, 1);
 	else if (ft_strcmp("sb\n", input))
@@ -104,10 +81,27 @@ void	input_instr(char *input, t_stack *stack)
 	}
 }
 
-int main(int argc, char **argv)
+void	input_instr(char *input, t_stack *stack)
 {
-	t_stack *stack;
-	char *input;
+	if (ft_strcmp("rra\n", input))
+		r_r(stack, 1);
+	else if (ft_strcmp("rrb\n", input))
+		r_r(stack, 2);
+	else if (ft_strcmp("rrr\n", input))
+		r_r(stack, 3);
+	else if (ft_strcmp("ra\n", input))
+		r(stack, 1);
+	else if (ft_strcmp("rb\n", input))
+		r(stack, 2);
+	else if (ft_strcmp("rr\n", input))
+		r(stack, 3);
+	input_instr2(input, stack);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack		*stack;
+	char		*input;
 
 	stack = ft_calloc(1, sizeof(t_stack));
 	input_struct(stack, argc, argv);
@@ -117,7 +111,7 @@ int main(int argc, char **argv)
 		input = get_next_line(0);
 		if (input == NULL)
 		{
-			if (check_sorted(stack))
+			if (check_sort(stack))
 				ft_putstr_fd("OK\n", 1);
 			else
 				ft_putstr_fd("KO\n", 1);
@@ -130,6 +124,5 @@ int main(int argc, char **argv)
 	free (stack->a);
 	free (stack->b);
 	free (stack);
-	// system("leaks checker");
 	return (0);
 }

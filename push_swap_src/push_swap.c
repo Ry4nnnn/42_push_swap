@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 22:05:13 by welim             #+#    #+#             */
-/*   Updated: 2022/08/18 22:19:02 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/19 12:29:47 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ int	main(int argc, char **argv)
 		free(data->stack_a);
 		free(data->stack_b);
 		free(data);
-		// system("leaks push_swap");
 		return (0);
 	}
 	sort_stack(data);
 	free(data->stack_a);
 	free(data->stack_b);
-	free(data);   
-	// system("leaks push_swap");
+	free(data);
 	return (0);
 }

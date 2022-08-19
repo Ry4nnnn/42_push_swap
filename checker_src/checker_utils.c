@@ -1,4 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/19 12:24:08 by welim             #+#    #+#             */
+/*   Updated: 2022/08/19 12:27:00 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
+
+t_stack	*input_struct(t_stack *stack, int argc, char **argv)
+{
+	stack->a = 0;
+	stack->b = 0;
+	stack->size_a = 0;
+	stack->size_b = 0;
+	stack->argv = argv;
+	stack->argc = argc;
+	return (stack);
+}
 
 int	ft_isnum(char *s)
 {
@@ -41,7 +64,7 @@ void	check_dup(t_stack *stack)
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] || s2[i])
@@ -56,7 +79,7 @@ int	ft_strcmp(char *s1, char *s2)
 //this function is to check whether array is sorted
 //sorted  = 1;
 //not sorted = 0;
-int	check_sorted(t_stack *stack)
+int	check_sort(t_stack *stack)
 {
 	int		i;
 	int		res;

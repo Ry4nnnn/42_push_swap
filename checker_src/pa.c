@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:23:13 by welim             #+#    #+#             */
-/*   Updated: 2022/08/18 21:02:22 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/19 12:24:49 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,4 @@ void	pa(t_stack *stack)
 	stack->size_a += 1;
 	replace_num_a(stack, temp, 2);
 	free(temp);
-	// ft_putstr_fd("pa\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:24:42 by welim             #+#    #+#             */
-/*   Updated: 2022/08/18 21:23:29 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/19 12:24:59 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,5 @@ void	r_r(t_stack *stack, int type)
 		shift_down(stack->a, stack->size_a);
 	if (type == 2 || type == 3)
 		shift_down(stack->b, stack->size_b);
-	// if (type == 1)
-	// 	ft_putstr_fd("rra\n", 1);
-	// if (type == 2)
-	// 	ft_putstr_fd("rrb\n", 1);
-	// if (type == 3)
-	// 	ft_putstr_fd("rrr\n", 1);
 	return ;
 }

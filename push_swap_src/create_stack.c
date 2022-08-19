@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:26:18 by welim             #+#    #+#             */
-/*   Updated: 2022/08/18 22:19:18 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/19 12:29:25 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	create_stack2(t_data *data, char **argv)
 			exit(0);
 		}
 		data->stack_a[i] = ft_atoi(res[i]);
-		free(res[i]); 
+		free (res[i]);
 		i++;
 	}
 	free(res);
