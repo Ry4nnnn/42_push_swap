@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:19:06 by welim             #+#    #+#             */
-/*   Updated: 2022/08/15 14:20:26 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/23 18:16:18 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ int		check_sorted(t_data *data);
 
 //create_stack.c
 void	create_stack(t_data *data, char **argv);
+
+//create_stack_utils.c
+int		ft_isnum(char *s);
+void	check_dup(t_data *data);
 
 //insertion_sort.c
 void	insertion_sort(t_data *data, int size);
