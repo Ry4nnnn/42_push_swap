@@ -6,22 +6,11 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:24:08 by welim             #+#    #+#             */
-/*   Updated: 2022/08/19 12:27:00 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/23 20:59:32 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-t_stack	*input_struct(t_stack *stack, int argc, char **argv)
-{
-	stack->a = 0;
-	stack->b = 0;
-	stack->size_a = 0;
-	stack->size_b = 0;
-	stack->argv = argv;
-	stack->argc = argc;
-	return (stack);
-}
 
 int	ft_isnum(char *s)
 {

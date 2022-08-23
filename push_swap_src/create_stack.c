@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:26:18 by welim             #+#    #+#             */
-/*   Updated: 2022/08/23 18:15:36 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/23 20:46:47 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	create_stack2_utils(char **res, int j)
 			exit(0);
 		}
 	}
-	if (ft_atoi(res[j]) > INT_MAX || ft_atoi(res[j]) < INT_MIN)
+	if (ft_atoi(res[j]) >= INT_MAX || ft_atoi(res[j]) <= INT_MIN)
 	{
 		ft_putstr_fd("Error!\n", 2);
 		exit (0);
@@ -59,6 +59,11 @@ static void	create_stack2(t_data *data, char **argv)
 
 static void	create_stack3_utils(char **argv, int i)
 {
+	if (!(ft_isnum(argv[i])))
+	{
+		ft_putstr_fd("Error!\n", 2);
+		exit(0);
+	}
 	if (argv[i][0] == '-')
 	{
 		if (!(argv[i][1] >= '0' && argv[i][1] <= '9'))
@@ -67,7 +72,7 @@ static void	create_stack3_utils(char **argv, int i)
 			exit (0);
 		}
 	}
-	if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
+	if (ft_atoi(argv[i]) >= INT_MAX || ft_atoi(argv[i]) <= INT_MIN)
 	{
 		ft_putstr_fd("Error!\n", 2);
 		exit (0);
@@ -103,5 +108,5 @@ void	create_stack(t_data *data, char **argv)
 		create_stack2(data, argv);
 	else
 		create_stack3(data, argv);
-	check_dup(data);
+	check_duplicate(data);
 }

@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:16:50 by welim             #+#    #+#             */
-/*   Updated: 2022/08/23 18:16:51 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/23 20:46:44 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_isnum(char *s)
 }
 
 //check for duplicate numbers
-void	check_dup(t_data *data)
+void	check_duplicate(t_data *data)
 {
 	int		i;
 	int		j;

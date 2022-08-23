@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:27:44 by welim             #+#    #+#             */
-/*   Updated: 2022/08/19 12:27:10 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/23 21:09:06 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 }	t_stack;
 
 //checker.c
-void	input_stack(t_stack *stack);
+void	input_stack(t_stack *stack, char **argv);
 void	input_instr(char *input, t_stack *stack);
 
 //checker_utils.c
@@ -37,7 +37,7 @@ int		ft_isnum(char *s);
 void	check_dup(t_stack *stack);
 int		ft_strcmp(char *s1, char *s2);
 int		check_sort(t_stack *stack);
-t_stack	*input_struct(t_stack *stack, int argc, char **argv);
+t_stack	*input_struct(t_stack *stack, int argc);
 
 //instr
 void	pa(t_stack *stack);

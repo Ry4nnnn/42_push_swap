@@ -6,60 +6,20 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:19:19 by welim             #+#    #+#             */
-/*   Updated: 2022/08/19 12:27:06 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/23 21:08:08 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	input_stack2(t_stack *stack)
+t_stack	*input_struct(t_stack *stack, int argc)
 {
-	int		i;
-	char	**res;
-
-	i = 0;
-	res = ft_split(stack->argv[1], ' ');
-	while (res[i])
-		i++;
-	stack->a = ft_calloc(i, sizeof(int));
-	stack->b = ft_calloc(i, sizeof(int));
-	i = 0;
-	while (res[i])
-	{
-		if (!(ft_isnum(res[i])))
-		{
-			ft_putstr_fd("Error!\n", 1);
-			exit(0);
-		}
-		stack->a[i] = ft_atoi(res[i]);
-		free(res[i]);
-		i++;
-	}
-	free (res);
-	stack->size_a = i;
-}
-
-void	input_stack(t_stack *stack)
-{
-	int		i;
-
-	i = 0;
-	if (stack->argc == 1)
-		exit (0);
-	else if (stack->argc == 2)
-		input_stack2(stack);
-	else
-	{
-		stack->a = ft_calloc(stack->argc - 1, sizeof(int));
-		stack->b = ft_calloc(stack->argc - 1, sizeof(int));
-		while (i < stack->argc - 1)
-		{
-			stack->a[i] = ft_atoi(stack->argv[i + 1]);
-			i++;
-		}
-		stack->size_a = i;
-	}
-	check_dup(stack);
+	stack->a = 0;
+	stack->b = 0;
+	stack->size_a = 0;
+	stack->size_b = 0;
+	stack->argc = argc;
+	return (stack);
 }
 
 static void	input_instr2(char *input, t_stack *stack)
@@ -104,8 +64,8 @@ int	main(int argc, char **argv)
 	char		*input;
 
 	stack = ft_calloc(1, sizeof(t_stack));
-	input_struct(stack, argc, argv);
-	input_stack(stack);
+	input_struct(stack, argc);
+	input_stack(stack, argv);
 	while (1)
 	{
 		input = get_next_line(0);
