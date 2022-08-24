@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 18:16:50 by welim             #+#    #+#             */
-/*   Updated: 2022/08/23 20:46:44 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/24 19:33:06 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ void	check_duplicate(t_data *data)
 	int		j;
 
 	i = 0;
-	while (data->stack_a[i])
+	while (data->len_a > i)
 	{
-		j = 0;
-		while (data->stack_a[++j])
+		j = 1;
+		while (data->len_a > j)
 		{
 			if (data->stack_a[i] == data->stack_a[j] && i != j)
 			{
 				ft_putstr_fd("Error!\n", 1);
 				exit(0);
 			}
+			j++;
 		}
 		i++;
 	}

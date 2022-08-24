@@ -6,11 +6,11 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:24:08 by welim             #+#    #+#             */
-/*   Updated: 2022/08/23 20:59:32 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/24 19:34:45 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker.h"	
 
 int	ft_isnum(char *s)
 {
@@ -36,16 +36,17 @@ void	check_dup(t_stack *stack)
 	int		j;
 
 	i = 0;
-	while (stack->a[i])
+	while (stack->size_a > i)
 	{
-		j = 0;
-		while (stack->a[++j])
+		j = 1;
+		while (stack->size_a > j)
 		{
 			if (stack->a[i] == stack->a[j] && i != j)
 			{
 				ft_putstr_fd("Error!\n", 1);
 				exit(0);
 			}
+			j++;
 		}
 		i++;
 	}
