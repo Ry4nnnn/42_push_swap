@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:19:19 by welim             #+#    #+#             */
-/*   Updated: 2022/08/23 21:08:08 by welim            ###   ########.fr       */
+/*   Updated: 2022/08/31 23:50:45 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	input_instr(char *input, t_stack *stack)
 		r(stack, 2);
 	else if (ft_strcmp("rr\n", input))
 		r(stack, 3);
-	input_instr2(input, stack);
+	else
+		input_instr2(input, stack);
 }
 
 int	main(int argc, char **argv)
@@ -71,7 +72,7 @@ int	main(int argc, char **argv)
 		input = get_next_line(0);
 		if (input == NULL)
 		{
-			if (check_sort(stack))
+			if (check_sort(stack) && stack->size_b == 0)
 				ft_putstr_fd("OK\n", 1);
 			else
 				ft_putstr_fd("KO\n", 1);

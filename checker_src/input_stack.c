@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_stack.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/31 22:36:32 by welim             #+#    #+#             */
+/*   Updated: 2022/08/31 22:37:13 by welim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 static void	input_stack2_utils(char **res, int j)
@@ -90,7 +102,7 @@ static void	input_stack3(t_stack *stack, char **argv)
 
 void	input_stack(t_stack *stack, char **argv)
 {
-	if (stack->argc == 1) 
+	if (stack->argc == 1)
 		exit(0);
 	else if (stack->argc == 2)
 		input_stack2(stack, argv);

@@ -1,43 +1,38 @@
-NAME	= push_swap
-CHECKER	= checker
+NAME		= push_swap
+CHECKER		= checker
+
+LIB			= -Llibft -lft
+INCLUDE		= -Iincludes -Ilibft
+FLAGS		= -Wall -Werror -Wextra #-g3 -fsanitize=address
+CC			= gcc
+RM			= rm -rf
+OBJS_DIR	= ./obj
 
 P_SRCS		= $(wildcard push_swap_src/*.c)
 C_SRCS		= $(wildcard checker_src/*.c)
 
-INSTR		= $(wildcard ./instr/*.c)
+P_OBJS		= ${P_SRCS:push_swap_src/%.c=${OBJS_DIR}/%.o}
+C_OBJS		= ${C_SRCS:checker_src/%.c=${OBJS_DIR}/%.o}
 
-P_OBJS		= ${P_SRCS:push_swap_src/%.c=%.o}
-C_OBJS		= ${C_SRCS:checker_src/%.c=%.o}
-
-OBJS_INSTR	= ${INSTR:./instr/%.c=%.o}
-
-LIB		= -Llibft -lft
-
-INCLUDE = -Iincludes -Ilibft
-
-FLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
-CC		= gcc
-RM		= rm -rf
-
-vpath %.c instr push_swap_src checker_src
+vpath %.c push_swap_src checker_src
 
 all		: ${NAME}
 bonus	: ${NAME} ${CHECKER}
 
-${NAME} : ${P_OBJS} ${OBJS_INSTR}
+${NAME} : ${P_OBJS}
 	@make -C libft
-	@${CC} ${FLAGS} ${INCLUDE} $(addprefix obj/, $^) ${LIB} -o $@
+	@${CC} ${FLAGS} ${INCLUDE} $^ ${LIB} -o $@
 
-${CHECKER} : ${C_OBJS} ${OBJS_INSTR}
+${CHECKER} : ${C_OBJS}
 	@make -C libft
-	@${CC} ${FLAGS} ${INCLUDE} $(addprefix obj/, $^) ${LIB} -o $@
+	@${CC} ${FLAGS} ${INCLUDE} $^ ${LIB} -o $@
 
-%.o : %.c
+obj/%.o : %.c
 	@mkdir -p obj
-	@${CC} ${FLAGS} ${INCLUDE} -c $< -o obj/$@
+	@${CC} ${FLAGS} ${INCLUDE} -c $< -o $@
 
 clean :
-	@rm -rf obj
+	@rm -rf obj 
 	@echo "Cleaning binary files 'push_swap'..."
 
 fclean : clean
