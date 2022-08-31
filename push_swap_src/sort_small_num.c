@@ -39,48 +39,104 @@ static void	sort_3(t_data *data)
 	}
 }
 
-static void	push_back2(t_data *data, int mask)
+static	int	find_after(t_data *data, int size)
 {
-	if (mask > data->stack_a[1] && mask < data->stack_a[2])
+	int	i;
+	int	temp;
+	int	updated;
+
+	i = 0;
+	temp = 0;
+	updated = 0;
+	while (i < size)
 	{
-		rotate(data, 1);
-		rotate(data, 1);
-		push_a(data);
-		rev_rotate(data, 1);
-		rev_rotate(data, 1);
+		if (data->stack_a[i] > data->stack_b[0])
+		{
+			if (updated == 0)
+			{
+				temp = i;
+				updated = 1;
+			}
+			else if (data->stack_a[i] < data->stack_a[temp])
+				temp = i;
+		}
+		i++;
 	}
-	if (mask > data->stack_a[0] && mask < data->stack_a[1])
-	{
-		rotate(data, 1);
-		push_a(data);
-		rev_rotate(data, 1);
-	}
-	if (mask < data->stack_a[0])
-		push_a(data);
+	if (updated == 0)
+		return (-1);
+	else
+		return (temp);
 }
 
-static void	push_back(t_data *data)
+static	void	push_back(t_data *data, int size)
 {
-	int		mask;
+	int	i;
 
-	mask = data->stack_b[0];
-	if (mask > data->stack_a[data->len_a - 1])
+	i = find_after(data, size);
+	if (i > -1)
 	{
-		push_a(data);
-		rotate(data, 1);
-	}
-	if (data->len_a == 4)
-	{
-		if (mask > data->stack_a[2] && mask < data->stack_a[3])
-		{
+		if (i == 1)
+			rotate(data, 1);
+		else if ((i == 2 && size == 3) || i == 3)
 			rev_rotate(data, 1);
-			push_a(data);
+		else if (i == 2 && size == 4)
+		{
 			rotate(data, 1);
 			rotate(data, 1);
 		}
+		push_a(data);
 	}
-	push_back2(data, mask);
+	else
+	{
+		sort_asc(data);
+		push_a(data);
+		rotate(data, 1);
+	}
 }
+
+
+// static void	push_back2(t_data *data, int mask)
+// {
+// 	if (mask > data->stack_a[1] && mask < data->stack_a[2])
+// 	{
+// 		rotate(data, 1);
+// 		rotate(data, 1);
+// 		push_a(data);
+// 		rev_rotate(data, 1);
+// 		rev_rotate(data, 1);
+// 	}
+// 	if (mask > data->stack_a[0] && mask < data->stack_a[1])
+// 	{
+// 		rotate(data, 1);
+// 		push_a(data);
+// 		rev_rotate(data, 1);
+// 	}
+// 	if (mask < data->stack_a[0])
+// 		push_a(data);
+// }
+
+// static void	push_back(t_data *data)
+// {
+// 	int		mask;
+
+// 	mask = data->stack_b[0];
+// 	if (mask > data->stack_a[data->len_a - 1])
+// 	{
+// 		push_a(data);
+// 		rotate(data, 1);
+// 	}
+// 	if (data->len_a == 4)
+// 	{
+// 		if (mask > data->stack_a[2] && mask < data->stack_a[3])
+// 		{
+// 			rev_rotate(data, 1);
+// 			push_a(data);
+// 			rotate(data, 1);
+// 			rotate(data, 1);
+// 		}
+// 	}
+// 	push_back2(data, mask);
+// }
 
 void	sort_stack(t_data *data)
 {
@@ -101,8 +157,9 @@ void	sort_stack(t_data *data)
 			push_b(data);
 			push_b(data);
 			sort_3(data);
-			push_back(data);
-			push_back(data);
+			push_back(data, 3);
+			push_back(data, 4);
+			sort_asc(data);
 		}
 	}
 	else if (data->len_a <= 250)

@@ -27,6 +27,7 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 //part 1
+long	ft_atoi(const char *str);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void	*dest, const void *src, size_t n);
@@ -45,7 +46,6 @@ char	*ft_strdup(const char *s);
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-long	ft_atoi(const char *str);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
