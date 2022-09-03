@@ -6,7 +6,7 @@
 /*   By: welim <welim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:22:26 by welim             #+#    #+#             */
-/*   Updated: 2022/08/11 21:22:58 by welim            ###   ########.fr       */
+/*   Updated: 2022/09/01 21:28:23 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,49 +94,15 @@ static	void	push_back(t_data *data, int size)
 	}
 }
 
-
-// static void	push_back2(t_data *data, int mask)
-// {
-// 	if (mask > data->stack_a[1] && mask < data->stack_a[2])
-// 	{
-// 		rotate(data, 1);
-// 		rotate(data, 1);
-// 		push_a(data);
-// 		rev_rotate(data, 1);
-// 		rev_rotate(data, 1);
-// 	}
-// 	if (mask > data->stack_a[0] && mask < data->stack_a[1])
-// 	{
-// 		rotate(data, 1);
-// 		push_a(data);
-// 		rev_rotate(data, 1);
-// 	}
-// 	if (mask < data->stack_a[0])
-// 		push_a(data);
-// }
-
-// static void	push_back(t_data *data)
-// {
-// 	int		mask;
-
-// 	mask = data->stack_b[0];
-// 	if (mask > data->stack_a[data->len_a - 1])
-// 	{
-// 		push_a(data);
-// 		rotate(data, 1);
-// 	}
-// 	if (data->len_a == 4)
-// 	{
-// 		if (mask > data->stack_a[2] && mask < data->stack_a[3])
-// 		{
-// 			rev_rotate(data, 1);
-// 			push_a(data);
-// 			rotate(data, 1);
-// 			rotate(data, 1);
-// 		}
-// 	}
-// 	push_back2(data, mask);
-// }
+static	void	sort_5(t_data *data)
+{
+	push_b(data);
+	push_b(data);
+	sort_3(data);
+	push_back(data, 3);
+	push_back(data, 4);
+	sort_asc(data);
+}
 
 void	sort_stack(t_data *data)
 {
@@ -153,14 +119,7 @@ void	sort_stack(t_data *data)
 	else if (data->len_a == 5)
 	{
 		if (!check_sorted(data))
-		{
-			push_b(data);
-			push_b(data);
-			sort_3(data);
-			push_back(data, 3);
-			push_back(data, 4);
-			sort_asc(data);
-		}
+			sort_5(data);
 	}
 	else if (data->len_a <= 250)
 		insertion_sort(data, 2);
