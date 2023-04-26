@@ -2,7 +2,7 @@
 
 <b/> A project from 42KL. </b>
 
-<b2/> This project is used for sorting a random stack of numbers in ascending order using two stacks and a limited amount of commands. </b2>
+<strong/> This project is used for sorting a random stack of numbers in ascending order using two stacks and a limited amount of commands. </strong>
 
 Grade :
 
