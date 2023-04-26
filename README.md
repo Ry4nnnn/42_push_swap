@@ -1,6 +1,12 @@
 # 42_push_swap
 
+<b/> A project from 42KL. </b>
+
 ## This project is used for sorting a random stack of numbers in ascending order using two stacks and a limited amount of commands.
+
+Grade :
+
+![](https://badge42.vercel.app/api/v2/cl31j44h0007809mep6of7oak/project/2655796)
 
 #### Commands:  
 
